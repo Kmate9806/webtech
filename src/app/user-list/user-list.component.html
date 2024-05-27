@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Felhasználók keresése</title>
+    <link rel="stylesheet" href="user-list.component.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row search-bar">
+            <input class="user-control" type="text" placeholder="Keresés..." [(ngModel)]="query" required>
+            <button class="btn btn-primary" (click)="search()">Keresés</button>
+        </div>
+        <div class="row user-list">
+            <div class="col-md-6" *ngFor="let user of users">
+                <div class="user-card">
+                    <h5>
+                        {{ user.lastName }} {{user.firstName }}
+                    </h5>
+                    <div class="user-details">
+                        <span class="badge text-bg-success">
+                            <p>tel </p> {{ user.tel }} 
+                        </span>
+                        <span class="badge text-bg-success">
+                            <p>email </p>{{ user.email }} 
+                        </span>
+                        <span class="badge text-bg-success">
+                            <p> cím </p>{{ user.address }} 
+                        </span>
+                    </div>
+                    <div class="row user-actions">
+                        <div class="col-md-6">
+                            <button class="btn btn-sm btn-outline-primary"
+                                (click)="navigateToUserForm(user.id)">Szerkesztés</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-sm btn-outline-danger"
+                                (click)="deleteUser(user)">Törlés</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

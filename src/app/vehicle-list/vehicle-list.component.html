@@ -1,0 +1,57 @@
+
+
+<div class="row">
+    <input class="car-control" type="text" placeholder="Search..." [(ngModel)]="query" required>
+    <button class="btn btn-primary" (click)="search()">Keresés</button>
+    <!--{{query}}-->
+</div>
+<div class="row">
+    <div class="col-md-6" *ngFor="let vehicle of vehicles">
+        <div class="vehicle-vehicled">
+            <div class="vehicle-info">
+                
+                <div class="model-and-categories">
+                    <h5><div>{{ vehicle.brand | slice:0:240 }} {{ vehicle.model | slice:0:240 }}</div></h5>
+                    <p *ngIf="vehicle.categories.length > 0">
+                        {{ getCategoryList(vehicle.categories) }}
+                    </p>
+                </div>
+            </div>
+            <div class="vehicle-details">
+                <img [src]="vehicle.imgUrl" class="vehicle-img" />
+                <div class="vehicle-description">
+                    <h5>
+                        <span class="badge text-bg-success">
+                            <p>km óra:</p>{{ vehicle.odometer }} 
+                        </span>
+                    </h5>
+                    <h5>
+                        <span class="badge text-bg-success">
+                            <p>Bérlési díj:</p>{{ vehicle.basePrice }} Ft
+                        </span>
+                    </h5>
+                    <h5>
+                        <span class="badge text-bg-success">
+                            <p>km díj:</p>{{ vehicle.kmCost }} Ft
+                        </span>
+                    </h5>
+                    <h5>
+                        <span class="badge text-bg-success">
+                            <p>Jármű állapot:</p>{{ vehicle.status }} 
+                        </span>
+                    </h5>
+                </div>
+            </div>
+            <div class="vehicle-actions">
+                <button class="btn btn-sm btn-outline-success"
+                    (click)="navigateToVehicleForm(vehicle.id)">Szerkesztés</button>
+                <button class="btn btn-sm btn-outline-danger"
+                    (click)="deleteVehicle(vehicle)">Törlés</button>
+
+                    <!-- Nem tudtam a következő a gombok megvalósítását megcsinálni -->
+                <button class="btn btn-sm btn-outline-primary">Bérbe adás</button>
+                <button class="btn btn-sm btn-outline-primary">Vissza hozás</button>
+            </div>
+        </div>
+    </div>
+</div>
