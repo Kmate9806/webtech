@@ -1,0 +1,98 @@
+
+<div class="container mt-4">
+  <div class="card">
+    <h1>Jármű Form</h1>
+   
+    <button type="button" class="btn btn-primary mb-3" (click)="toggleForm()">Új Jármű</button>
+    
+   
+    <form *ngIf="showForm">
+      <div class="form-group">
+        <label>Brand</label>
+        <input type="text" [(ngModel)]="brand" name="brand" class="form-control" id="brand" placeholder="Enter Brand">
+      </div>
+      <div class="form-group">
+        <label>Model</label>
+        <input type="text" [(ngModel)]="model" name="model" class="form-control" id="model" placeholder="Enter Model">
+      </div>
+      <div class="form-group">
+        <label>Plate</label>
+        <input type="text" [(ngModel)]="plate" name="plate" class="form-control" id="plate" placeholder="Enter Plate">
+      </div>
+      <div class="form-group">
+        <label>Odometer</label>
+        <input type="text" [(ngModel)]="odometer" name="odometer" class="form-control" id="odometer" placeholder="Enter Odometer">
+      </div>
+      <div class="form-group">
+        <label>Base Price</label>
+        <input type="text" [(ngModel)]="basePrice" name="basePrice" class="form-control" id="basePrice" placeholder="Enter Base Price">
+      </div>
+      <div class="form-group">
+        <label>Km Cost</label>
+        <input type="text" [(ngModel)]="kmCost" name="kmCost" class="form-control" id="kmCost" placeholder="Enter Km Cost">
+      </div>
+      <div class="form-group">
+        <label>Image URL</label>
+        <input type="text" [(ngModel)]="imgUrl" name="imgUrl" class="form-control" id="imgUrl" placeholder="Enter Image URL">
+      </div>
+      <div class="form-group">
+        <label>Status</label>
+        <input type="text" [(ngModel)]="status" name="status" class="form-control" id="status" placeholder="Enter Status">
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="save()">Mentés</button>
+    </form>
+  </div>
+</div>
+
+
+<div class="container mt-4">
+  <div class="card">
+    <h1>Jármű Lista</h1>
+    
+    <div class="row">
+      <div class="col-md-6" *ngFor="let vehicle of VehicleArray">
+        <div class="vehicle-vehicled">
+          <div class="vehicle-info">
+            <div class="model-and-categories">
+              <h5>{{ vehicle.brand }} {{ vehicle.model }}</h5>
+            </div>
+          </div>
+          <div class="vehicle-details">
+            <img [src]="vehicle.imgUrl" class="vehicle-img" />
+            <div class="vehicle-description">
+              <h5>
+                <span class="badge text-bg-success">
+                  <p>rendszám:</p>{{ vehicle.plate }} 
+                </span>
+              </h5>
+              <h5>
+                <span class="badge text-bg-success">
+                  <p>km óra:</p>{{ vehicle.odometer }} 
+                </span>
+              </h5>
+              <h5>
+                <span class="badge text-bg-success">
+                  <p>Bérlési díj:</p>{{ vehicle.basePrice }} Ft
+                </span>
+              </h5>
+              <h5>
+                <span class="badge text-bg-success">
+                  <p>km díj:</p>{{ vehicle.kmCost }} Ft
+                </span>
+              </h5>
+              <h5>
+                <span class="badge text-bg-success">
+                  <p>Jármű állapot:</p>{{ vehicle.status }} 
+                </span>
+              </h5>
+            </div>
+          </div>
+          <div class="vehicle-actions">
+              <button type="button" class="btn btn-success" (click)="setUpdate(vehicle)">Szerkesztés</button>
+              <button type="button" class="btn btn-danger" (click)="setDelete(vehicle)">Törlés</button>   
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

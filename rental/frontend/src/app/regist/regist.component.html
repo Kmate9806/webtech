@@ -1,0 +1,23 @@
+<div class="container">
+  <h2>Regisztráció</h2>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="firstName">Vezetéknév:</label>
+      <input type="text" class="form-control" id="firstName" [(ngModel)]="firstName" name="firstName">
+    </div>
+    <div class="form-group">
+      <label for="lastName">Keresztnév:</label>
+      <input type="text" class="form-control" id="lastName" [(ngModel)]="lastName" name="lastName">
+    </div>
+    <div class="form-group">
+      <label for="email">Email cím:</label>
+      <input type="email" class="form-control" id="email" [(ngModel)]="email" name="email">
+    </div>
+    <div class="form-group">
+      <label for="password">Jelszó:</label>
+      <input type="password" class="form-control" id="password" [(ngModel)]="password" name="password">
+    </div>
+    <button type="submit" class="btn btn-primary">Regisztráció</button>
+  </form>
+  <button class="btn btn-secondary" (click)="navigateToLogin()">Bejelentkezés</button>
+</div>

@@ -1,0 +1,54 @@
+.container {
+    margin-top: 4rem;
+
+    .card {
+        padding: 1rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+        h1 {
+            color: #333;
+            margin-bottom: 2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+
+            thead {
+                background-color: #343a40;
+                color: #fff;
+
+                th {
+                    padding: 1rem;
+                    text-align: left;
+                }
+            }
+
+            tbody {
+                tr {
+                    &:hover {
+                        background-color: #f5f5f5;
+                    }
+
+                    td {
+                        padding: 1rem;
+                        text-transform: uppercase; // Konvertáljuk az összes szöveget nagybetűssé
+                    }
+
+                    td:nth-child(5) {
+                        width: 20%; // Állítsuk be a "email" oszlop szélességét
+                    }
+
+                    td:last-child {
+                        width: 25%; // Állítsuk be az "Option" oszlop szélességét
+                    }
+
+                    button {
+                        margin-right: 0.5rem;
+                    }
+                }
+            }
+        }
+    }
+}

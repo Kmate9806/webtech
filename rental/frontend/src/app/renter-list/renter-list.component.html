@@ -1,0 +1,66 @@
+
+<div class="container mt-4">
+  <div class="card">
+    <h1>Új Bérlő</h1>
+  
+    <button type="button" class="btn btn-primary mb-3" (click)="toggleForm()">Új Bérlő</button>
+    
+   
+    <form *ngIf="showForm">
+      <div class="form-group">
+        <label>FirstName</label>
+        <input type="text" [(ngModel)]="firstName" name="firstName" class="form-control" placeholder="Enter FirstName">
+      </div>
+      <div class="form-group">
+        <label>LastName</label>
+        <input type="text" [(ngModel)]="lastName" name="lastName" class="form-control" placeholder="Enter LastName">
+      </div>
+      <div class="form-group">
+        <label>Address</label>
+        <input type="text" class="form-control" [(ngModel)]="address" name="address" placeholder="Enter Address">
+      </div>
+      <div class="form-group">
+        <label>Tel</label>
+        <input type="text" class="form-control" [(ngModel)]="tel" name="tel" placeholder="Enter Tel">
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="text" class="form-control" [(ngModel)]="email" name="email" placeholder="Enter Email">
+      </div>
+      
+      <button type="submit" class="btn btn-primary" (click)="save()">Mentés</button>
+    </form>
+  </div>
+</div>
+
+
+<div class="container mt-4">
+  <div class="card">
+    <h1>Regisztrált Bérlők</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">FirstName</th>
+          <th scope="col">LastName</th>
+          <th scope="col">Address</th>
+          <th scope="col">Tel</th>
+          <th scope="col">Email</th>
+          <th scope="col">Option</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let RenterItem of RenterArray">
+          <td>{{RenterItem.firstName | uppercase}}</td>
+          <td>{{RenterItem.lastName | uppercase}}</td>
+          <td>{{RenterItem.address}}</td>
+          <td>{{RenterItem.tel}}</td>
+          <td>{{RenterItem.email}}</td>
+          <td>
+            <button type="button" class="btn btn-success" (click)="setUpdate(RenterItem)">Szerkesztés</button>
+            <button type="button" class="btn btn-danger" (click)="setDelete(RenterItem)">Törlés</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
